@@ -9,8 +9,8 @@ public class Main {
         DungeonLayout map = new DungeonLayout();
 
         ui.startMenu();
-        Room entracne = new Room(0,false);
-        map.addRoom(entracne);
+        Room entrance = new Room(0,false);
+        map.addRoom(entrance);
         // Tutorial room med spider mob
         Room room1 = new Room(1, startNPC, true);
         map.addRoom(room1);
@@ -19,7 +19,8 @@ public class Main {
         map.addRoom(room2);
         Room room3 = new Room(3,true,false);
         map.addRoom(room3);
-        //todo Vi skal have en boss i room 4 og skrive hvordan vi vil lave resten af rummene
+        //todo Vi skal have en boss i room 4 og skrive hvordan vi vil lave resten af rummene dvs.
+        // hvilke slags monstre og NPC's der skal være tilstede i rummene 
 
 
 
