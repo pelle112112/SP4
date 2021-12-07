@@ -13,6 +13,7 @@ public class UI {
         int input = scanner.nextInt();
 
         if(input == 1){
+            System.out.println("Good luck inside the dungeon");
             //todo: start game
         }
         else if(input == 2){
@@ -25,9 +26,13 @@ public class UI {
 
 
         System.out.println("What would you like to do?");
+        //IF THERES AN NPC
         System.out.println("1. Interact with the NPC");
+        //IF THERES A MOB
         System.out.println("2. Attack the mob");
+        //IF THERES A CLUE
         System.out.println("3. Read the Clue");
+
         int input = scanner.nextInt();
         //todo: Man skal kunne se hvilke rum man kan gå ind og ud af.
 

@@ -18,4 +18,5 @@ public class Combat {
         return combatHPArray;
     }
 
+
 }

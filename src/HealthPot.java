@@ -11,5 +11,4 @@ public class HealthPot extends Item{
             return playerHealth+potency;
         }
 
-
 }
