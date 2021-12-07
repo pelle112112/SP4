@@ -7,6 +7,7 @@ public class Room {
     Boolean isDoorClosed = false;
     Boolean isDoor2Closed = false;
     String Npc = "NPC";
+    String Npcv2 = "NPCV2";
     String System = "System";
     String System2 = "System2";
     String clue = "Clue";
@@ -43,23 +44,29 @@ public class Room {
     }
 
     //ROOM 2
-    public Room(int roomID,Boolean door, Boolean door2,String SYSTEM,String Clue, DungeonObjects roomItem){
+    public Room(int roomID,Boolean door, Boolean door2,String SYSTEM,String Clue, DungeonObjects key2room4){
         RoomID=roomID;
         this.isDoorClosed=door;
         this.isDoor2Closed=door2;
+        this.System = SYSTEM;
+        this.clue= Clue;
+        RoomItem = key2room4;
     }
 
-    // Room 2 part 2
-  //  public Room(String SYSTEM,String Clue, DungeonObjects roomItem) {
-  //      this.System = SYSTEM;
-  //      this.clue = Clue;
-  //      RoomItem = roomItem;
-  //  }
-
-    public Room(int roomID, String NPC, Boolean door,Mobs mobs) {
-        RoomID = roomID;
-        this.Npc = NPC;
-        this.isDoorClosed = door;
-        this.mobs = mobs;
+    // ROOM 3
+    public Room (int roomID,Boolean door, Boolean door2,String NPC, String SYSTEM, String NPCV2){
+        RoomID=roomID;
+        this.isDoorClosed= door;
+        this.isDoor2Closed=door2;
+        this.Npc= NPC;
+        this.System = SYSTEM;
+        this.Npcv2 = NPCV2;
     }
+
+    //public Room(int roomID, String NPC, Boolean door,Mobs mobs) {
+    //    RoomID = roomID;
+    //    this.Npc = NPC;
+    //    this.isDoorClosed = door;
+    //    this.mobs = mobs;
+   // }
 }

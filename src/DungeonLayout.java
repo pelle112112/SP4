@@ -33,10 +33,12 @@ public class DungeonLayout {
         Room room1 = new Room(2,"System: \"This room rinks of bad smell, its covered in a black ooze of some kind, with green rot on the walls\".\n" +
                 "\t",false,true);
         addRoom(room1);
-        Room room2 = new Room(3,false,true,"System: \"You have found a small blue key, you should try it out on that door right over there, its probably just scrap!\"\n" +
-                "\t\n" +
-                "\t\tYou try ferociously to unlock the door, but with no success...","Clue: \"The locked door requires a very large specific key looted from >The Imp-aler< who is said to be further inside the dungeon\"",);
+        Room room2 = new Room(3,false,true,"System: You have found a small blue key, you should try it out on that door right over there, its probably just scrap!\".\n"+"\t " +
+                " You try ferociously to unlock the door, but with no success...","" +
+                "The locked door requires a very large specific key looted from >The Imp-aler< who is said to be further inside the dungeon", key2room4);
         addRoom(room2);
+        Room room3 = new
+
         //todo Vi skal have en boss i room 4 og skrive hvordan vi vil lave resten af rummene dvs.
         // hvilke slags monstre og NPC's der skal være tilstede i rummene
 
