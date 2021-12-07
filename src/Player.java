@@ -13,4 +13,11 @@ public class Player {
         this.inventory = inventory;
         this.itemEquipped = itemEquipped;
     }
+
+    public void armorHPIncreaser(){
+        this.PlayerHealthPoints = this.PlayerHealthPoints + 20;
+    }
+    public void damageIncreaser(){
+        this.PlayerDamagePoints = this.PlayerDamagePoints + 20;
+    }
 }
