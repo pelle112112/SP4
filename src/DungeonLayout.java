@@ -1,8 +1,10 @@
+import java.nio.file.AtomicMoveNotSupportedException;
 import java.util.ArrayList;
 
 public class DungeonLayout {
 
     ArrayList<Room> rooms = new ArrayList();
+
 
 
     public void addRoom(Room room){
@@ -11,33 +13,73 @@ public class DungeonLayout {
 
 
     public ArrayList<Room> getRooms() {
-        Room entrance = new Room(0,false,"\"\\t\\\"The princess has been kidnapped! You are our only hope to save her from ___!\\\"\\n\" +\n" +
-                "            \"\\t\\\"The king has promissed her marraige to whoever saves her\\\"\\n\" +\n" +
-                "            \"\\t\\\"You have hid behind the other knights who have been defeated by the terrors of the dark\\\"\\n\" +\n" +
-                "            \"\\t\\\"We dont believe you have what it takes, but we have no one left except you!\\\"\\n\" +\n" +
-                "            \"\\t\\\"Go now! Show your worth and you will be rewarded!\\\"\";\n");
+        Script script = new Script();
+        Room entrance = new Room(0,false,script.text1, script.text2);
+        entrance.setRoomConnections(true, false, false, false);
         addRoom(entrance);
+
         // Tutorial room med spider mob
-        Room tutorial = new Room(1,true,"System: \"You are in the trial room. You have the possibility to interact with\n" +
-                "\t\t\tother NPCs, attack mobs/bosses and find clues/keys on the ground to advance\n" +
-                "\t\t\tin the dungeon.\"\n" +
-                "\t\n" +
-                "\tNPC2:\n" +
-                "\t\"I AM A KNIGHT! But that spider..... it terrifies me... Help me kill it and i will grant you my sword!\"\n" +
-                "\t\t\n");
+        Room tutorial = new Room(1,true,script.text2, script.text3);
+        tutorial.setRoomConnections(true, true, false, false);
+        Mobs spider = new Mobs(50,10);
+        Key key1 = new Key("First key", "key", "key1");
+        spider.setKey(key1);
+        tutorial.addMob(spider);
         addRoom(tutorial);
-        // after combat
-        Room tutorial2 = new Room(1,"System: \"You have found a key. Try and use it on that locked door over there!\"","NPC2:Thanks for helping me out, but did I really need your help afterall? Well take my sword anyway and be gone!","System: \"You have unlocked the door to Room 1\"");
-        addRoom(tutorial2);
+
         // First room
-        Room room1 = new Room(2,"System: \"This room rinks of bad smell, its covered in a black ooze of some kind, with green rot on the walls\".\n" +
-                "\t",false,true);
+        Room room1 = new Room(2,script.text5);
+        room1.setRoomConnections(false, false,true, true);
         addRoom(room1);
-        Room room2 = new Room(3,false,true,"System: You have found a small blue key, you should try it out on that door right over there, its probably just scrap!\".\n"+"\t " +
-                " You try ferociously to unlock the door, but with no success...","" +
-                "The locked door requires a very large specific key looted from >The Imp-aler< who is said to be further inside the dungeon", key2room4);
+        Key key2 = new Key("Second Key", "Key", "key2");
+
+        // Second room
+        Room room2 = new Room(3,script.text7,script.text8,key2);
+        room2.setRoomConnections(false, false, true, true);
         addRoom(room2);
-        Room room3 = new
+
+        // Third room
+        Room room3 = new Room(4,script.text8,script.text9);
+        room3.setRoomConnections(true, false, false, true);
+        addRoom(room3);
+
+        // Fourth room with a boss
+        Mobs impOssible = new Mobs(70, 15);
+        Room room4 = new Room(5);
+        room4.setRoomConnections(true, true, true, false);
+        room4.setMobs(impOssible);
+        room4.setSystem(script.text11);
+        room4.setNpc(script.text10);
+        room4.setNpcv2(script.text12);
+        room4.setSystem2(script.text13);
+        addRoom(room4);
+
+        //Fifth room
+        Room room5 = new Room(6);
+        room5.setSystem(script.text15);
+        room5.setRoomConnections(false, false, true, true);
+
+        //Sixth Room
+        Room room6 = new Room(7);
+        Armor armorpiece = new Armor("Semi-weak piece of armor", "Armor", "Leather gear");
+        HealthPot healthPot1 = new HealthPot("Normal Healing Potion", "HealthPot", "HealthPot");
+        room6.setSystem(script.text16);
+        room6.setSystem2(script.text17);
+        room6.setArmor(armorpiece);
+        room6.setHealthPot(healthPot1);
+
+
+        // Sevent Room
+        Room room7= new Room(8);
+        room7.setSystem(script.text18);
+        addRoom(room7);
+
+        // Eighth room
+      //  Room room8 = new Room(9);
+      //  room8.setSystem(script.text19);
+      //  Mobs Imp_Aler = new Mobs(100,30);
+      //  room8.setMobs(script.text20);
+
 
         //todo Vi skal have en boss i room 4 og skrive hvordan vi vil lave resten af rummene dvs.
         // hvilke slags monstre og NPC's der skal være tilstede i rummene

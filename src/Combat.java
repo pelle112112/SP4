@@ -37,7 +37,7 @@ public class Combat {
             targetHealthPoints = targetHealthPoints - updatedDamagePoints;
 
             if(targetHealthPoints <= 0){
-                System.out.println("The mob died.");
+                System.out.println("The mob died. \n");
                 break;
             }
             else{
@@ -46,7 +46,7 @@ public class Combat {
             System.out.println("The target has struck you for " + updatedTargetDamagePoints);
             healthPoints = healthPoints - updatedTargetDamagePoints;
             if(healthPoints <= 0){
-                System.out.println("You have died.");
+                System.out.println("You have died.\n");
                 break;
             }
             else{

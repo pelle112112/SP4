@@ -1,17 +1,15 @@
 public class Player {
     int PlayerHealthPoints = 100;
-    int PlayerDamagePoints;
+    int PlayerDamagePoints = 30;
     int CurrentHealthPoints;
     Inventory inventory;
     Item itemEquipped;
 
 
-
-    public Player(int playerHealthPoints, int playerdamagePoints, Inventory inventory, Item itemEquipped) {
+    public Player(int playerHealthPoints, int playerDamagePoints, Inventory inventory) {
         PlayerHealthPoints = playerHealthPoints;
-        PlayerDamagePoints = playerdamagePoints;
+        PlayerDamagePoints = playerDamagePoints;
         this.inventory = inventory;
-        this.itemEquipped = itemEquipped;
     }
 
     public void armorHPIncreaser(){
