@@ -18,19 +18,17 @@ public class Main {
         ui.startMenu();
 
         rooms = map.getRooms();
-        System.out.println(rooms);
 
 
         while (true) {
+
+            if (index == 3){
+                player.inventory.addItemToInventory(rooms.get(3).key);
+            }
             input = ui.playerInteract(rooms.get(index),index);
             switch (input) {
                 case 1:
-                    if(ui.combatCounter == 0){
-                        ui.NPCInteract(index, 1, rooms);
-                    }
-                    else {
-                        ui.NPCInteract(index, 2, rooms);
-                    }
+                        ui.NPCInteract(index, rooms.get(index), rooms);
 
                     break;
 

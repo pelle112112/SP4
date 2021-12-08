@@ -40,7 +40,7 @@ public class UI {
         if(room.Npc!=null){
             System.out.println("1. Interact with the NPC");
         }
-        if(room.mobs!=null && combatCounter != 1){
+        if(room.mobs!=null && room.combatCounter == false){
             System.out.println("2. Attack the mob");
         }
         if(room.RoomItem != null){
@@ -58,28 +58,42 @@ public class UI {
         if(room.roomWest != false){
             System.out.println("7. Go West into the next room");
         }
+        System.out.println("\n\n");
 
 
 
         int input = scanner.nextInt();
         if(input == 2){
-            combatCounter++;
+            room.combatCounter = true;
         }
         //todo: Man skal kunne se hvilke rum man kan gå ind og ud af.
 
         return input;
     }
 
-    public void NPCInteract(int index, int counter, ArrayList<Room> arrayList){
+    public void NPCInteract(int index, Room room, ArrayList<Room> arrayList){
         map = new DungeonLayout();
-        if(counter == 1){
+        if(room.combatCounter == false){
             System.out.println("NPC: " + arrayList.get(index).Npc);
-        }
-        else if(counter == 2){
-            System.out.println("NPC: " + arrayList.get(index).Npcv2);
-        }
+            if(room.System.equals("System")){
+                System.out.println(" ");
+            }
+            else{
+                System.out.println("System: " + arrayList.get(index).System);
+            }
 
+            if(room.enemyTalk.equals("..")){
+                System.out.println(" ");
+            }
+            else {
+                System.out.println("");
+            }
 
+        }
+        else if(room.combatCounter == true){
+            System.out.println("NPC: " + arrayList.get(index).Npc2);
+            System.out.println("System: " + arrayList.get(index).System2);
+        }
 
 
     }
@@ -89,7 +103,7 @@ public class UI {
             System.out.println("you picked up "+ map.rooms.get(index).item);
         }
         if(player.inventory != null){
-           if(player.inventory.items.contains(w))
+           //if(player.inventory.items.contains(w))
 
             //System.out.println("9: Use "+ player.inventory.displayItems());
             //Scanner scanner = new Scanner(System.in);
@@ -172,8 +186,7 @@ public class UI {
         }
         if(index == 4 && direction == 1){
             for (int i = 0; i < player.inventory.items.size(); i++) {
-                if(player.inventory.items.get(i) == arrayList.get(index).key){
-                    System.out.println("TEST PRINT");
+                if(player.inventory.items.get(i) == arrayList.get(3).key){
                     index++;
                 }
                 else{

@@ -29,6 +29,7 @@ public class Combat {
     public void combat(int healthPoints, int targetHealthPoints, int damagePoints, int targetDamagePoints){
 
         int updatedDamagePoints = 0, updatedTargetDamagePoints = 0;
+        System.out.println("\n_______________________________________________________________________________________________\n");
 
         while(healthPoints > 0 || targetHealthPoints > 0){
             updatedDamagePoints = damagePointCalculator(damagePoints);
@@ -53,5 +54,6 @@ public class Combat {
                 System.out.println("You now have " + healthPoints + " HP left!");
             }
         }
+        System.out.println("\n_______________________________________________________________________________________________\n");
     }
 }

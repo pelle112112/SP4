@@ -2,71 +2,26 @@ public class Room {
     int RoomID;
     DungeonObjects RoomItem;
     Mobs mobs;
-    NPC npc;
     Item item;
     Armor armor;
     Weapon weapon;
     HealthPot healthPot;
+    Boolean combatCounter = false;
     Key key;
-    Boolean isDoorClosed = false;
-    Boolean isDoor2Closed = false;
     String Npc = "NPC";
-    String Npcv2 = "NPCV2";
+    String Npc2 = "NPC2";
     String System = "System";
     String System2 = "System2";
+    String System3= "System3";
     String clue = "Clue";
+    String enemyTalk = "..";
     Boolean roomNorth = false;
     Boolean roomSouth = false;
     Boolean roomEast = false;
     Boolean roomWest = false;
 
-    //
-    public Room(int roomID, DungeonObjects roomItem, Mobs mobs, NPC npc, Item item, Boolean door) {
-        RoomID = roomID;
-        RoomItem = roomItem;
-        this.mobs = mobs;
-        this.npc = npc;
-        this.item = item;
-        this.isDoorClosed = door;
-    }
-    // TUTORIAL ROOM ROOM ID 1
-    public Room(int roomID, Boolean door, String NPC, String npcv2) {
-        RoomID = roomID;
-        this.isDoorClosed = door;
-        this.Npc = NPC;
-        this.Npcv2 = npcv2;
-    }
-    // TUTORIAL ROOM 2
-    public Room(int roomID,String SYSTEM,String NPC, String SYSTEM2,boolean door){
-        RoomID=roomID;
-        this.System = SYSTEM;
-        this.Npc= NPC;
-        this.System2=SYSTEM2;
-        this.isDoorClosed=door;
-    }
-
-    //ROOM 1 ROOM ID 2
-    public Room(int roomID, String SYSTEM) {
-        RoomID = roomID;
-        this.System = SYSTEM;
-    }
-
-    //ROOM 2 ROOM ID 3
-    public Room(int roomID,String SYSTEM,String Clue, Key KEY){
-        RoomID=roomID;
-        this.System = SYSTEM;
-        this.clue= Clue;
-        this.key = KEY;
-    }
 
 
-
-    // ROOM 3 ROOM ID 4
-    public Room (int roomID,String NPC, String NPCV2){
-        RoomID=roomID;
-        this.Npc= NPC;
-        this.Npcv2 = NPCV2;
-    }
 
     public Room (int roomID){
         RoomID=roomID;
@@ -86,16 +41,16 @@ public class Room {
         Npc = npc;
     }
 
-    public void setNpcv2(String npcv2) {
-        Npcv2 = npcv2;
-    }
-
     public void setSystem(String system) {
         System = system;
     }
 
     public void setSystem2(String system2) {
         System2 = system2;
+    }
+
+    public void setSystem3(String system3){
+        System3 = system3;
     }
 
     public void setClue(String clue) {
@@ -116,6 +71,18 @@ public class Room {
 
     public void setHealthPot(HealthPot healthPot) {
         this.healthPot = healthPot;
+    }
+
+    public void setKey(Key key) {
+        this.key = key;
+    }
+
+    public void setNpc2(String npc2) {
+        this.Npc2 = npc2;
+    }
+
+    public void setEnemyTalk(String enemyTalk) {
+        this.enemyTalk = enemyTalk;
     }
 }
 

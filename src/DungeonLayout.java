@@ -14,12 +14,15 @@ public class DungeonLayout {
 
     public ArrayList<Room> getRooms() {
         Script script = new Script();
-        Room entrance = new Room(0,false,script.text1, script.text2);
+        Room entrance = new Room(0);
+        entrance.setSystem(script.text1);
         entrance.setRoomConnections(true, false, false, false);
         addRoom(entrance);
 
         // Tutorial room med spider mob
-        Room tutorial = new Room(1,true,script.text2, script.text3);
+        Room tutorial = new Room(1);
+        tutorial.setNpc(script.text2);
+        tutorial.setNpc2(script.text3);
         tutorial.setRoomConnections(true, true, false, false);
         Mobs spider = new Mobs(50,10);
         Key key1 = new Key("First key", "key", "key1");
@@ -28,18 +31,25 @@ public class DungeonLayout {
         addRoom(tutorial);
 
         // First room
-        Room room1 = new Room(2,script.text5);
+        Room room1 = new Room(2);
+        room1.setNpc(script.text5);
         room1.setRoomConnections(false, false,true, true);
         addRoom(room1);
-        Key key2 = new Key("Second Key", "Key", "key2");
+
 
         // Second room
-        Room room2 = new Room(3,script.text7,script.text8,key2);
+        Room room2 = new Room(3);
+        Key key2 = new Key("Second Key", "Key", "key2");
         room2.setRoomConnections(false, false, true, true);
+        room2.setKey(key2);
+        room2.setSystem(script.text6);
+        room2.setSystem(script.text7);
         addRoom(room2);
 
         // Third room
-        Room room3 = new Room(4,script.text8,script.text9);
+        Room room3 = new Room(4);
+        room3.setNpc(script.text8);
+        room3.setNpc2(script.text9);
         room3.setRoomConnections(true, false, false, true);
         addRoom(room3);
 
@@ -48,9 +58,8 @@ public class DungeonLayout {
         Room room4 = new Room(5);
         room4.setRoomConnections(true, true, true, false);
         room4.setMobs(impOssible);
-        room4.setSystem(script.text11);
         room4.setNpc(script.text10);
-        room4.setNpcv2(script.text12);
+        room4.setNpc2(script.text12);
         room4.setSystem2(script.text13);
         addRoom(room4);
 
@@ -67,18 +76,26 @@ public class DungeonLayout {
         room6.setSystem2(script.text17);
         room6.setArmor(armorpiece);
         room6.setHealthPot(healthPot1);
+        addRoom(room6);
 
 
-        // Sevent Room
+        // Seventh Room
         Room room7= new Room(8);
         room7.setSystem(script.text18);
         addRoom(room7);
 
         // Eighth room
-      //  Room room8 = new Room(9);
-      //  room8.setSystem(script.text19);
-      //  Mobs Imp_Aler = new Mobs(100,30);
-      //  room8.setMobs(script.text20);
+        Room room8 = new Room(9);
+        room8.setSystem(script.text19);
+        Mobs Imp_Aler = new Mobs(100,40);
+        room8.setEnemyTalk(script.text20);
+        room8.setMobs(Imp_Aler);
+        room8.setSystem2(script.text21);
+        room8.setSystem3(script.text22);
+        addRoom(room8);
+
+        // Ninth / final room
+        Room room9 = new Room(10);
 
 
         //todo Vi skal have en boss i room 4 og skrive hvordan vi vil lave resten af rummene dvs.
