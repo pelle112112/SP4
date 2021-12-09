@@ -57,8 +57,13 @@ public class Script {
     String text28 = "System: \"You throw the IMP-ALER's head infront of the Goblin-King";
     String text29 = "Goblin-King \"WHAT?? HOW IS THAT POSSBILE??\"";
     String text30 = "Player: \"Well that only leaves you...\"\n";
-    String text31 = "";
-    String text32 = "";
+    String text31 = "SYSTEM: \"WHO DO YOU VOTE FOR TO WIN THE FINAL BATTLE? THE GRUSOME GOBLIN-KING OR THE SAVIOR OF THE WORLD THE PLAYER?\"\n" +
+            "\t\t\"SEND YOU BETS TO X (MOBLIE PAY) NUMBER TO VOTE\" \n" +
+            "\tSYSTEM: PLZ DONATE SOME MONEY TO US, WE ARE POOR\n" +
+            "\tSYSTEM: \"FIGHT\"\n" +
+            "\tSYSTEM: POKEMON RED/BLUE BATTLE THEME STARTS";
+    String text32 = "System: \"You defeated the Goblin-king and returned to the kingdom with the princess\"\n" +
+            "\t\t\"But she liked the Goblin-king more than you... Tough luck, and thus you did not marry her\"";
 
 
     public void setText1() {

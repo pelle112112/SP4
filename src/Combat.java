@@ -26,7 +26,7 @@ public class Combat {
     }
 
 
-    public void combat(int healthPoints, int targetHealthPoints, int damagePoints, int targetDamagePoints){
+    public int combat(int healthPoints, int targetHealthPoints, int damagePoints, int targetDamagePoints){
 
         int updatedDamagePoints = 0, updatedTargetDamagePoints = 0;
         System.out.println("\n_______________________________________________________________________________________________\n");
@@ -55,5 +55,7 @@ public class Combat {
             }
         }
         System.out.println("\n_______________________________________________________________________________________________\n");
+
+        return healthPoints;
     }
 }

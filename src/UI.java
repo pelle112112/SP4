@@ -22,7 +22,7 @@ public class UI {
             System.exit(0);
         }
     }
-    public int playerInteract(Room room, int index){
+    public int playerInteract(Room room, int index, Player player, ArrayList<Room> rooms){
         Scanner scanner = new Scanner(System.in);
         int roomPrint = index-1;
 
@@ -35,6 +35,7 @@ public class UI {
         }
         else{
             System.out.println("You are in room " + roomPrint + "! \n");
+            System.out.println("You have " + player.PlayerHealthPoints + " HP");
         }
         System.out.println("What would you like to do? \n");
         if(room.Npc!=null){
@@ -58,6 +59,9 @@ public class UI {
         if(room.roomWest != false){
             System.out.println("7. Go West into the next room");
         }
+        if(player.inventory.items.contains(rooms.get(6).healthPot)){
+            System.out.println("8. Use a healthPotion");
+        }
         System.out.println("\n\n");
 
 
@@ -74,13 +78,9 @@ public class UI {
     public void NPCInteract(int index, Room room, ArrayList<Room> arrayList){
         map = new DungeonLayout();
         if(room.combatCounter == false){
+
             System.out.println("NPC: " + arrayList.get(index).Npc);
-            if(room.System.equals("System")){
-                System.out.println(" ");
-            }
-            else{
-                System.out.println("System: " + arrayList.get(index).System);
-            }
+            System.out.println("System: " + arrayList.get(index).System);
 
             if(room.enemyTalk.equals("..")){
                 System.out.println(" ");
@@ -155,28 +155,28 @@ public class UI {
         }
         //south
         if(index == 2 && direction == 2){
-            index--;
+            index=1;
             return index;
         }
         //west
         else if(index == 2 && direction == 4){
-            index++;
+            index=3;
             return index;
         }
         //east
         else if(index == 2 && direction == 3){
-            index = index + 2;
+            index = 4;
             return index;
         }
         if(index == 3 && direction == 3){
-            index--;
+            index = 2;
             return index;
         }
         if(index == 3 && direction == 4){
 
             for (int i = 0; i < player.inventory.items.size(); i++) {
-                if(player.inventory.items.get(i) == arrayList.get(index).mobs.key){
-                    index++;
+                if(player.inventory.items.get(i) == arrayList.get(9).key){
+                    index = 10;
                 }
                 else{
                     System.out.println("Door is locked. Try to find/use a key");
@@ -187,7 +187,7 @@ public class UI {
         if(index == 4 && direction == 1){
             for (int i = 0; i < player.inventory.items.size(); i++) {
                 if(player.inventory.items.get(i) == arrayList.get(3).key){
-                    index++;
+                    index=5;
                 }
                 else{
                     System.out.println("Door is locked. Try to find/use a key");
@@ -204,23 +204,23 @@ public class UI {
             return index;
         }
         if(index == 5 && direction == 2){
-            index--;
+            index = 4;
             return index;
         }
         if(index == 5 && direction == 3){
-            index++;
+            index = 6;
             return index;
         }
         if(index == 6 && direction == 3){
-            index++;
+            index = 7;
             return index;
         }
         if(index == 6 && direction == 4){
-            index--;
+            index = 5;
             return index;
         }
         if(index == 7 && direction == 4){
-            index--;
+            index = 6;
             return index;
         }
         if(index == 8 && direction == 1){
@@ -228,7 +228,11 @@ public class UI {
             return index;
         }
         if(index == 8 && direction == 2){
-            index--;
+            index = 5;
+            return index;
+        }
+        if(index == 9 && direction == 2){
+            index = 8;
             return index;
         }
 

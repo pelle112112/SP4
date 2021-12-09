@@ -1,6 +1,6 @@
 public class Player {
-    int PlayerHealthPoints = 100;
-    int PlayerDamagePoints = 30;
+    int PlayerHealthPoints;
+    int PlayerDamagePoints;
     int CurrentHealthPoints;
     Inventory inventory;
     Item itemEquipped;
@@ -12,10 +12,21 @@ public class Player {
         this.inventory = inventory;
     }
 
+    public void setPlayerHealthPoints(int playerHealthPoints) {
+        PlayerHealthPoints = playerHealthPoints;
+    }
+
     public void armorHPIncreaser(){
-        this.PlayerHealthPoints = this.PlayerHealthPoints + 20;
+        System.out.println("After equipping your new piece of armor, you have gained 50 more Max HP!");
+        this.PlayerHealthPoints = this.PlayerHealthPoints + 50;
     }
     public void damageIncreaser(){
+        System.out.println("After equipping your new sword, you have gained 20 more Damage Points!");
         this.PlayerDamagePoints = this.PlayerDamagePoints + 20;
+    }
+    public void useHealthPotion (){
+        this.PlayerHealthPoints = PlayerHealthPoints + 50;
+
+        System.out.println("The HealthPot has healed you for 50 HP! You now have " + PlayerHealthPoints + " HP!");
     }
 }

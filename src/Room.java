@@ -13,8 +13,14 @@ public class Room {
     String System = "System";
     String System2 = "System2";
     String System3= "System3";
+    String System4 = "System4";
     String clue = "Clue";
     String enemyTalk = "..";
+    String enemyTalk2 = "";
+    String enemyTalk3 = "";
+    String playerTalk = "";
+    String playerTalk2 = "";
+    String  playerTalk3 = "";
     Boolean roomNorth = false;
     Boolean roomSouth = false;
     Boolean roomEast = false;
@@ -53,6 +59,10 @@ public class Room {
         System3 = system3;
     }
 
+    public void setSystem4(String system4){
+        System3 = system4;
+    }
+
     public void setClue(String clue) {
         this.clue = clue;
     }
@@ -83,6 +93,24 @@ public class Room {
 
     public void setEnemyTalk(String enemyTalk) {
         this.enemyTalk = enemyTalk;
+    }
+    public void setEnemyTalk2(String enemyTalk2) {
+        this.enemyTalk2 = enemyTalk2;
+    }
+
+    public void setEnemyTalk3(String enemyTalk3) {
+        this.enemyTalk3 = enemyTalk3;
+    }
+
+    public void setPlayerTalk(String playerTalk) {
+        this.playerTalk = playerTalk;
+    }
+    public void setPlayerTalk2(String playerTalk2) {
+        this.playerTalk2 = playerTalk2;
+    }
+
+    public void setPlayerTalk3(String playerTalk3) {
+        this.playerTalk3 = playerTalk3;
     }
 }
 
