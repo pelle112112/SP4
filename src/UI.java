@@ -3,10 +3,11 @@ import java.util.Scanner;
 
 public class UI {
     DungeonLayout map;
-    int combatCounter = 0;
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 
 
-    public void startMenu(){
+    public void startMenu(ArrayList<Room> rooms){
         System.out.println("Welcome to DungeonCrawler!");
         System.out.println("To start a game press the following: \n");
         System.out.println("1. Start Game");
@@ -16,6 +17,8 @@ public class UI {
 
         if(input == 1){
             //todo: start game
+            System.out.println("System: " + rooms.get(0).System);
+
         }
         else if(input == 2){
             System.out.println("You have exited the program");
@@ -28,7 +31,7 @@ public class UI {
 
 
         if(index == 0){
-            System.out.println("You are in the entrance room! \n");
+            System.out.println("You are in the entrance room! \n ");
         }
         else if (index == 1){
             System.out.println("You are in the Tutorial room! \n");
@@ -37,13 +40,18 @@ public class UI {
             System.out.println("You are in room " + roomPrint + "! \n");
             System.out.println("You have " + player.PlayerHealthPoints + " HP");
         }
-        System.out.println("What would you like to do? \n");
-        if(room.Npc!=null){
+        System.out.println(ANSI_YELLOW + "What would you like to do? \n" + ANSI_RESET);
+        if(room.Npc!= "NPC"){
             System.out.println("1. Interact with the NPC");
         }
-        if(room.mobs!=null && room.combatCounter == false){
-            System.out.println("2. Attack the mob");
-        }
+
+
+            if (room.mobs != null && room.combatCounter == false) {
+                System.out.println("2. Attack the mob");
+            }
+
+
+
         if(room.RoomItem != null){
             System.out.println("3. Read the Clue");
         }
@@ -62,14 +70,18 @@ public class UI {
         if(player.inventory.items.contains(rooms.get(6).healthPot)){
             System.out.println("8. Use a healthPotion");
         }
+        if(index == 7 && room.chestOpened == false){
+            System.out.println("9. Open the chest");
+        }
+        if(index == 10){
+            System.out.println("10. Interact with the Goblin King");
+        }
         System.out.println("\n\n");
 
 
 
         int input = scanner.nextInt();
-        if(input == 2){
-            room.combatCounter = true;
-        }
+
         //todo: Man skal kunne se hvilke rum man kan gå ind og ud af.
 
         return input;
@@ -77,22 +89,17 @@ public class UI {
 
     public void NPCInteract(int index, Room room, ArrayList<Room> arrayList){
         map = new DungeonLayout();
+
+
+        //NPC print
         if(room.combatCounter == false){
-
-            System.out.println("NPC: " + arrayList.get(index).Npc);
-            System.out.println("System: " + arrayList.get(index).System);
-
-            if(room.enemyTalk.equals("..")){
-                System.out.println(" ");
-            }
-            else {
-                System.out.println("");
-            }
+            System.out.println(arrayList.get(index).Npc);
+            //System.out.println("System: " + arrayList.get(index).System);
 
         }
         else if(room.combatCounter == true){
-            System.out.println("NPC: " + arrayList.get(index).Npc2);
-            System.out.println("System: " + arrayList.get(index).System2);
+            System.out.println(arrayList.get(index).Npc2);
+            //System.out.println("System: " + arrayList.get(index).System2);
         }
 
 
@@ -126,54 +133,64 @@ public class UI {
 
 
     }
-    public int enterRoom(int index, ArrayList<Room> arrayList, int direction, Player player){
+    public int enterRoom(int index, ArrayList<Room> arrayList, int direction, Player player) throws Exception{
+
+
+        int oldindex = index;
+
+
 
         //north
         if(index == 0 && direction == 1){
             index++;
-            return index;
         }
         //north
-        if(index == 1 && direction == 1){
-            if(player.inventory.items.size() == 0){
-                System.out.println("Door is locked. Try to find/use a key");
-            }
-            for (int i = 0; i < player.inventory.items.size(); i++) {
-                if(player.inventory.items.get(i) == arrayList.get(index).mobs.key){
-                    index = 2;
-                }
-                else{
+        try {
+
+
+            if (index == 1 && direction == 1) {
+                if (player.inventory.items.size() == 0) {
                     System.out.println("Door is locked. Try to find/use a key");
                 }
+                for (int i = 0; i < player.inventory.items.size(); i++) {
+
+                    if (player.inventory.items.get(i) == arrayList.get(index).mobs.key) {
+                        index = 2;
+                    } else {
+                        System.out.println("Door is locked. Try to find/use a key");
+                    }
+                }
+
             }
-            return index;
+        }
+        catch (NullPointerException e){
+
         }
         //south
-        else if(index == 1 && direction == 2){
+        if(index == 1 && direction == 2){
             index--;
-            return index;
+
         }
         //south
         if(index == 2 && direction == 2){
             index=1;
-            return index;
+
         }
         //west
         else if(index == 2 && direction == 4){
             index=3;
-            return index;
+
         }
         //east
         else if(index == 2 && direction == 3){
             index = 4;
-            return index;
-        }
-        if(index == 3 && direction == 3){
-            index = 2;
-            return index;
-        }
-        if(index == 3 && direction == 4){
 
+        }
+        else if(index == 3 && direction == 3){
+            index = 2;
+
+        }
+        else if(index == 3 && direction == 4){
             for (int i = 0; i < player.inventory.items.size(); i++) {
                 if(player.inventory.items.get(i) == arrayList.get(9).key){
                     index = 10;
@@ -182,59 +199,65 @@ public class UI {
                     System.out.println("Door is locked. Try to find/use a key");
                 }
             }
-            return index;
+
         }
-        if(index == 4 && direction == 1){
+        else if(index == 4 && direction == 1){
             for (int i = 0; i < player.inventory.items.size(); i++) {
                 if(player.inventory.items.get(i) == arrayList.get(3).key){
-                    index=5;
+                    index = 5;
                 }
                 else{
                     System.out.println("Door is locked. Try to find/use a key");
                 }
             }
-            return index;
+
         }
-        if(index == 4 && direction == 4){
+        else if(index == 4 && direction == 4){
             index = 2;
-            return index;
+
         }
-        if(index == 5 && direction == 1){
+        else if(index == 5 && direction == 1){
             index = 8;
-            return index;
+
         }
-        if(index == 5 && direction == 2){
+        else if(index == 5 && direction == 2){
             index = 4;
-            return index;
+
         }
-        if(index == 5 && direction == 3){
+        else if(index == 5 && direction == 3){
             index = 6;
-            return index;
+
         }
-        if(index == 6 && direction == 3){
+        else if(index == 6 && direction == 3){
             index = 7;
-            return index;
+
         }
-        if(index == 6 && direction == 4){
+        else if(index == 6 && direction == 4){
             index = 5;
-            return index;
+
         }
-        if(index == 7 && direction == 4){
+        else if(index == 7 && direction == 4){
             index = 6;
-            return index;
+
         }
-        if(index == 8 && direction == 1){
+        else if(index == 8 && direction == 1){
             index++;
-            return index;
+
         }
-        if(index == 8 && direction == 2){
+        else if(index == 8 && direction == 2){
             index = 5;
-            return index;
+
         }
-        if(index == 9 && direction == 2){
+        else if(index == 9 && direction == 2){
             index = 8;
-            return index;
+
         }
+        if(arrayList.get(index).combatCounter == false) {
+            System.out.println(arrayList.get(index).System);
+        }
+
+
+        //System print
 
 
         return index;

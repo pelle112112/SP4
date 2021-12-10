@@ -1,23 +1,23 @@
 public class Script {
-    String text1 = "The princess has been kidnapped! You are our only hope to save her from ___!" +
-            "            \"\\t\\\"The king has promissed her marraige to whoever saves her\\\"\\n\" +\n" +
-            "            \"\\t\\\"You have hid behind the other knights who have been defeated by the terrors of the dark\\\"\\n\" +\n" +
-            "            \"\\t\\\"We dont believe you have what it takes, but we have no one left except you!\\\"\\n\" +\n" +
-            "            \"\\t\\\"Go now! Show your worth and you will be rewarded!\\\"\";\n";
+    String text1 = "The princess has been kidnapped! You are our only hope to save her from The Goblin-King!\n" +
+            "The king has promissed her marraige to whoever saves her\n" +
+            "You have hid behind the other knights who have been defeated by the terrors of the dark\n" +
+            "We dont believe you have what it takes, but we have no one left except you!\n" +
+            "Go now! Show your worth and you will be rewarded!";
     String text2 = "System: \"You are in the trial room. You have the possibility to interact with\n" +
-            "\t\t\tother NPCs, attack mobs/bosses and find clues/keys on the ground to advance\n" +
+            "\t\t\tother NPCs,attack mobs/bosses and find clues/keys on the ground to advance\n" +
             "\t\t\tin the dungeon.\"\n" +
-            "\t\n" +
-            "\tNPC2:\n" +
-            "\t\"I AM A KNIGHT! But that spider..... it terrifies me... Help me kill it and i will grant you my sword!\"\n" +
-            "\t\t\n";
-    String text3= "System:"+ "You have found a key. Try and use it on that locked door over there!" + "\n" +
-            "NPC2: \"Thanks for helping me out, but did I really need your help afterall? Well take my sword anyway and be gone!";
+            "\t\n";
+    String text40 = "NPC2:" +
+            "I AM A KNIGHT! But that spider..... it terrifies me... Help me kill it and i will grant you my sword!";
+    String text3= "System:"+ "You have found a key. Try and use it on that locked door over there!" + "\n";
+    String text41 = "NPC2: \"Thanks for helping me out, but did I really need your help afterall? Well take my sword anyway and be gone!\n"
+            +"After equipping your new sword, you have gained 20 more Damage Points!";;
     String text4= "System:\"+ \"You have unlocked the door to Room 1\"" ;
-    String text5= "System:\"+\"This room rinks of bad smell, its covered in a black ooze of some kind, with green rot on the walls" ;
-    String text6= "You have found a small blue key, you should try it out on that door right over there, its probably just scrap!" +
+    String text5= "System:"+"This room rinks of bad smell, its covered in a black ooze of some kind, with green rot on the walls" ;
+    String text6= "You have found a small blue key, you should try it out on that door right over there, its probably just scrap!\n" +
             "You try ferociously to unlock the door, but with no success...";
-    String text7= "Clue:\"+ \"The locked door requires a very large specific key looted from >The Imp-aler< who is said to be further inside the dungeon";
+    String text7= "Clue\n:"+"The locked door requires a very large specific key looted from >The Imp-aler< who is said to be further inside the dungeon";
     String text8= "NPC3:\n" +
             "\t\"I dont know how to get through the door! Do you have the key required to open the lock?\" \n" +
             "\t\"I have searched everywhere insinde the room, but i have yet to find the key\"" ;
@@ -49,7 +49,9 @@ public class Script {
             "\tSystem: \"After you defeat the IMP-ALER you loot his corpse and take the giant black key\"\n" +
             "\tSystem: \"Use the key to unlock the last door and save the princess\"";
     // Room 9
-    String text23 = "System: \"You open the door and gold start falling out of the room\"";
+    String text23 = "System: \"You open the door and gold start falling out of the room\"\"n";
+
+
     String text24 = "Goblin-King \"GET OUT OF MY DUNGEON YOU FILTHY PEASANT\"";
     String text25 = "Player:"+ "No i dont think i will";
     String text26 = "Goblin-King \"I WILL PERSONALLY CALL UPON THE IMP-ALER TO THROW YOU OUT OF MY DUNGEON AND EAT YOU ALIVE WHILE THE PRINCESS AND I WIL BE WATCHING\"";
@@ -64,6 +66,13 @@ public class Script {
             "\tSYSTEM: POKEMON RED/BLUE BATTLE THEME STARTS";
     String text32 = "System: \"You defeated the Goblin-king and returned to the kingdom with the princess\"\n" +
             "\t\t\"But she liked the Goblin-king more than you... Tough luck, and thus you did not marry her\"";
+
+    //room descriptions
+    String description1 = "A great entrance hall, full of light. A lonely soul stands in the corner scared for his life.";
+    String description3 = "A dark moist corridor, cockroaches running from one wall to the next through the cracks.";
+    String description5 = "pitch black, a single lantern casting off some light.";
+    String description6 = "part of the ceiling has collapsed and is blocking the way.";
+    String description7 = "an entrance of some sort, horrifying stench.";
 
 
     public void setText1() {
@@ -201,4 +210,18 @@ public class Script {
     public String getText32() {
         return text32;
     }
+
+    public String getText40(){return text40;}
+
+    public String getText41(){return  text41;}
+
+    public String getDescription1(){return  description1;}
+
+    public String getDescription3(){return  description3;}
+
+    public String getDescription5(){return  description5;}
+
+    public String getDescription6(){return description6;}
+
+    public String getDescription7(){return description7;}
 }

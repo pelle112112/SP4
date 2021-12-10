@@ -1,6 +1,7 @@
 public class Room {
     int RoomID;
     DungeonObjects RoomItem;
+    Boolean chestOpened = false;
     Mobs mobs;
     Item item;
     Armor armor;

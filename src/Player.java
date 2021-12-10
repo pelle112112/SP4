@@ -21,7 +21,6 @@ public class Player {
         this.PlayerHealthPoints = this.PlayerHealthPoints + 50;
     }
     public void damageIncreaser(){
-        System.out.println("After equipping your new sword, you have gained 20 more Damage Points!");
         this.PlayerDamagePoints = this.PlayerDamagePoints + 20;
     }
     public void useHealthPotion (){

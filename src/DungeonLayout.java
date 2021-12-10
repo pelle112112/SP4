@@ -21,8 +21,10 @@ public class DungeonLayout {
 
         // Tutorial room med spider mob
         Room tutorial = new Room(1);
-        tutorial.setNpc(script.text2);
-        tutorial.setNpc2(script.text3);
+        tutorial.setSystem(script.text2);
+        tutorial.setSystem2(script.text3);
+        tutorial.setNpc(script.text40);
+        tutorial.setNpc2(script.text41);
         tutorial.setRoomConnections(true, true, false, false);
         Mobs spider = new Mobs(50,10);
         Key key1 = new Key("First key", "key", "key1");
@@ -32,7 +34,7 @@ public class DungeonLayout {
 
         // First room
         Room room1 = new Room(2);
-        room1.setNpc(script.text5);
+        room1.setSystem(script.text5);
         room1.setRoomConnections(false, false,true, true);
         addRoom(room1);
 
@@ -43,7 +45,7 @@ public class DungeonLayout {
         room2.setRoomConnections(false, false, true, true);
         room2.setKey(key2);
         room2.setSystem(script.text6);
-        room2.setSystem(script.text7);
+        room2.setSystem2(script.text7);
         addRoom(room2);
 
         // Third room
