@@ -26,7 +26,7 @@ public class DungeonLayout {
         tutorial.setNpc(script.text40);
         tutorial.setNpc2(script.text41);
         tutorial.setRoomConnections(true, true, false, false);
-        Mobs spider = new Mobs(50,10);
+        Mobs spider = new Mobs(70,20);
         Key key1 = new Key("First key", "key", "key1");
         spider.setKey(key1);
         tutorial.addMob(spider);
@@ -42,21 +42,22 @@ public class DungeonLayout {
         // Second room
         Room room2 = new Room(3);
         Key key2 = new Key("Second Key", "Key", "key2");
+        room2.setClue(script.text7);
         room2.setRoomConnections(false, false, true, true);
         room2.setKey(key2);
         room2.setSystem(script.text6);
-        room2.setSystem2(script.text7);
         addRoom(room2);
 
         // Third room
         Room room3 = new Room(4);
+        room3.setSystem(script.description3);
         room3.setNpc(script.text8);
         room3.setNpc2(script.text9);
         room3.setRoomConnections(true, false, false, true);
         addRoom(room3);
 
         // Fourth room with a boss
-        Mobs impOssible = new Mobs(70,25);
+        Mobs impOssible = new Mobs(100,30);
         Room room4 = new Room(5);
         room4.setRoomConnections(true, true, true, false);
         room4.setMobs(impOssible);
@@ -78,6 +79,7 @@ public class DungeonLayout {
         HealthPot healthPot1 = new HealthPot("Normal Healing Potion", "HealthPot", "HealthPot");
         room6.setSystem(script.text16);
         room6.setSystem2(script.text17);
+        room6.setSystem3(script.description6);
         room6.setArmor(armorpiece);
         room6.setHealthPot(healthPot1);
         addRoom(room6);
@@ -95,29 +97,21 @@ public class DungeonLayout {
         room8.setKey(key3);
         room8.setRoomConnections(false, true, false, false);
         room8.setSystem(script.text19);
-        Mobs Imp_Aler = new Mobs(120,45);
+        Mobs Imp_Aler = new Mobs(150,55);
         room8.setEnemyTalk(script.text20);
         room8.setMobs(Imp_Aler);
+        room8.setClue(script.text22);
         room8.setSystem2(script.text21);
-        room8.setSystem3(script.text22);
         addRoom(room8);
 
         // Ninth / final room
         Room room9 = new Room(10);
-        Mobs Goblin_king = new Mobs(140,50);
+        Mobs Goblin_king = new Mobs(200,55);
         room9.setMobs(Goblin_king);
         room9.setSystem(script.text23);
         room9.setEnemyTalk(script.text24);
-        room9.setPlayerTalk(script.text25);
-        room9.setEnemyTalk2(script.text26);
-        room9.setPlayerTalk2(script.text27);
-        room9.setSystem2(script.text28);
-        room9.setEnemyTalk3(script.text29);
-        room9.setPlayerTalk3(script.text30);
-        room9.setSystem3(script.text31);
-        room9.setSystem4(script.text32);
+        room9.setSystem2(script.text25);
         addRoom(room9);
-
 
         return rooms;
     }

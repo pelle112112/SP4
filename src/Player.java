@@ -1,9 +1,7 @@
 public class Player {
     int PlayerHealthPoints;
     int PlayerDamagePoints;
-    int CurrentHealthPoints;
     Inventory inventory;
-    Item itemEquipped;
 
 
     public Player(int playerHealthPoints, int playerDamagePoints, Inventory inventory) {
@@ -24,7 +22,7 @@ public class Player {
         this.PlayerDamagePoints = this.PlayerDamagePoints + 20;
     }
     public void useHealthPotion (){
-        this.PlayerHealthPoints = PlayerHealthPoints + 50;
+        this.PlayerHealthPoints = PlayerHealthPoints + 45;
 
         System.out.println("The HealthPot has healed you for 50 HP! You now have " + PlayerHealthPoints + " HP!");
     }

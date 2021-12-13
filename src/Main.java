@@ -7,10 +7,11 @@ public class Main {
 
         boolean key2Added = false, key3Added = false;
         int index = 0, input = 0;
+        Script script = new Script();
         ArrayList<Room> rooms = new ArrayList();
         UI ui = new UI();
         Inventory inventory = new Inventory();
-        Player player = new Player(250,20,inventory);
+        Player player = new Player(250,25,inventory);
         Combat combat = new Combat();
         DungeonLayout map = new DungeonLayout();
 
@@ -20,6 +21,7 @@ public class Main {
         ui.startMenu(rooms);
 
         while (true) {
+
             input = ui.playerInteract(rooms.get(index),index, player, rooms);
 
             if (index == 3 && key2Added == false){
@@ -64,7 +66,7 @@ public class Main {
                     break;
 
                 case 3:
-
+                    System.out.println(rooms.get(index).clue);
                     break;
 
                 case 4:
@@ -103,9 +105,19 @@ public class Main {
 
                 case 10:
 
+                    System.out.println(script.text24);
+
                     //Todo: Lav sidste rum færdigt.
                     break;
+
+                case 11:
+
+                    System.out.println("You have exited the game. Thanks for playing!");
+                    System.exit(0);
+
+                    break;
             }
+
         }
     }
 }

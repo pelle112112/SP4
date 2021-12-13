@@ -1,9 +1,7 @@
 public class Room {
     int RoomID;
-    DungeonObjects RoomItem;
     Boolean chestOpened = false;
     Mobs mobs;
-    Item item;
     Armor armor;
     Weapon weapon;
     HealthPot healthPot;
@@ -15,7 +13,7 @@ public class Room {
     String System2 = "System2";
     String System3= "System3";
     String System4 = "System4";
-    String clue = "Clue";
+    String clue = " ";
     String enemyTalk = "..";
     String enemyTalk2 = "";
     String enemyTalk3 = "";

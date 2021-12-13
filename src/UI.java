@@ -3,8 +3,27 @@ import java.util.Scanner;
 
 public class UI {
     DungeonLayout map;
+    //text color
     public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+
+    //background color
+    public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
+    public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
+    public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
+    public static final String ANSI_YELLOW_BACKGROUND = "\u001B[43m";
+    public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
+    public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
+    public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
+    public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+
 
 
     public void startMenu(ArrayList<Room> rooms){
@@ -38,43 +57,46 @@ public class UI {
         }
         else{
             System.out.println("You are in room " + roomPrint + "! \n");
-            System.out.println("You have " + player.PlayerHealthPoints + " HP");
+            System.out.println("You have " + ANSI_RED + player.PlayerHealthPoints + " HP" + ANSI_RESET);
         }
         System.out.println(ANSI_YELLOW + "What would you like to do? \n" + ANSI_RESET);
         if(room.Npc!= "NPC"){
-            System.out.println("1. Interact with the NPC");
+            System.out.println("1. "+ANSI_BLUE+ "Interact with the NPC"+ANSI_RESET);
         }
 
 
             if (room.mobs != null && room.combatCounter == false) {
-                System.out.println("2. Attack the mob");
+                System.out.println("2."+ANSI_BLUE+" Attack the mob"+ANSI_RESET);
             }
 
 
 
-        if(room.RoomItem != null){
-            System.out.println("3. Read the Clue");
+        if(index == 9 && room.combatCounter == true || index == 3){
+            System.out.println("3."+ANSI_BLUE+" Read the Clue"+ANSI_RESET);
         }
         if(room.roomNorth != false){
-            System.out.println("4. Go north into the next room");
+            System.out.println("4."+ANSI_BLUE +" Go north into the next room"+ANSI_RESET);
         }
         if(room.roomSouth != false){
-            System.out.println("5. Go south into the next room");
+            System.out.println("5."+ANSI_BLUE+" Go south into the next room"+ANSI_RESET);
         }
         if(room.roomEast != false){
-            System.out.println("6. Go East into the next room");
+            System.out.println("6."+ANSI_BLUE +" Go East into the next room"+ ANSI_RESET);
         }
         if(room.roomWest != false){
-            System.out.println("7. Go West into the next room");
+            System.out.println("7."+ANSI_BLUE+" Go West into the next room"+ANSI_RESET);
         }
         if(player.inventory.items.contains(rooms.get(6).healthPot)){
-            System.out.println("8. Use a healthPotion");
+            System.out.println("8."+ANSI_BLUE+" Use a healthPotion"+ANSI_RESET);
         }
         if(index == 7 && room.chestOpened == false){
-            System.out.println("9. Open the chest");
+            System.out.println("9."+ANSI_BLUE+" Open the chest"+ANSI_RESET);
         }
-        if(index == 10){
-            System.out.println("10. Interact with the Goblin King");
+        if(index == 10 && room.combatCounter == false){
+            System.out.println("10."+ANSI_BLUE+" Interact with the Goblin King"+ANSI_RESET);
+        }
+        if(index == 10 && room.combatCounter == true){
+            System.out.println("11."+ANSI_BLUE+" Quit game"+ANSI_RESET);
         }
         System.out.println("\n\n");
 
@@ -82,50 +104,21 @@ public class UI {
 
         int input = scanner.nextInt();
 
-        //todo: Man skal kunne se hvilke rum man kan gå ind og ud af.
-
         return input;
     }
 
-    public void NPCInteract(int index, Room room, ArrayList<Room> arrayList){
+    public void NPCInteract(int index, Room room, ArrayList<Room> arrayList) {
         map = new DungeonLayout();
 
-
-        //NPC print
-        if(room.combatCounter == false){
+        if (room.combatCounter == false) {
             System.out.println(arrayList.get(index).Npc);
-            //System.out.println("System: " + arrayList.get(index).System);
 
-        }
-        else if(room.combatCounter == true){
+        } else if (room.combatCounter == true) {
             System.out.println(arrayList.get(index).Npc2);
-            //System.out.println("System: " + arrayList.get(index).System2);
         }
-
 
     }
-    public void itemInteract(int index, Player player){
-        if(map.rooms.get(index).item != null){
-            player.inventory.addItemToInventory(map.rooms.get(index).item);
-            System.out.println("you picked up "+ map.rooms.get(index).item);
-        }
-        if(player.inventory != null){
-           //if(player.inventory.items.contains(w))
 
-            //System.out.println("9: Use "+ player.inventory.displayItems());
-            //Scanner scanner = new Scanner(System.in);
-            //int input = scanner.nextInt();
-           // if(input == 9){
-//player.inventory.removeItemFromInventory();
-
-            }
-
-
-        }
-
-
-        //return player;
-    ///}
     public void mobInteract(){
 
     }
@@ -136,52 +129,41 @@ public class UI {
     public int enterRoom(int index, ArrayList<Room> arrayList, int direction, Player player) throws Exception{
 
 
-        int oldindex = index;
-
-
-
-        //north
         if(index == 0 && direction == 1){
             index++;
         }
-        //north
-        try {
 
 
-            if (index == 1 && direction == 1) {
-                if (player.inventory.items.size() == 0) {
+        else if (index == 1 && direction == 1) {
+            if (player.inventory.items.size() == 0) {
                     System.out.println("Door is locked. Try to find/use a key");
                 }
-                for (int i = 0; i < player.inventory.items.size(); i++) {
+            for (int i = 0; i < player.inventory.items.size(); i++) {
 
-                    if (player.inventory.items.get(i) == arrayList.get(index).mobs.key) {
+                if (player.inventory.items.get(i) == arrayList.get(index).mobs.key) {
                         index = 2;
                     } else {
                         System.out.println("Door is locked. Try to find/use a key");
                     }
                 }
 
-            }
         }
-        catch (NullPointerException e){
 
-        }
-        //south
-        if(index == 1 && direction == 2){
+        else if(index == 1 && direction == 2){
             index--;
 
         }
-        //south
-        if(index == 2 && direction == 2){
+
+        else if(index == 2 && direction == 2){
             index=1;
 
         }
-        //west
+
         else if(index == 2 && direction == 4){
             index=3;
 
         }
-        //east
+
         else if(index == 2 && direction == 3){
             index = 4;
 
@@ -254,11 +236,10 @@ public class UI {
         }
         if(arrayList.get(index).combatCounter == false) {
             System.out.println(arrayList.get(index).System);
+            if(index == 7){
+                System.out.println(arrayList.get(7).System3);
+            }
         }
-
-
-        //System print
-
 
         return index;
     }
